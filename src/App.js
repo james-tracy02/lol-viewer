@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
+import FeaturedSpectate from "./containers/FeaturedSpectate";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Route exact path="/" component={FeaturedSpectate} />
+        <Navbar />
+        <Route path="/" component={FeaturedSpectate} />
+        <Footer />
       </Router>
     );
   }
