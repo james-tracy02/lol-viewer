@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Clock from './Clock';
+import PlayerInfo from './PlayerInfo';
 
 export default class Match extends React.Component {
 
@@ -19,13 +21,39 @@ export default class Match extends React.Component {
     }
   }
 
+  colorFromMap(map) {
+    if(map === "Summoner's Rift") {
+      return "jbg-red";
+    } else {
+      return "jbg-blue";
+    }
+  }
+
   render() {
     const queueInfo = this.queueInfo(this.props.match.gameQueueConfigId);
-
+    const time = Date.now() - this.props.match.gameStartTime;
     return (
       <div className="match">
-        <div className="mx-3 my-1 p-3 bg-primary text-white">
-          {queueInfo.mode} | <small>{queueInfo.map}</small>
+        <div className={"mx-3 my-3 p-3 text-white " + this.colorFromMap(queueInfo.map)}>
+          <span className="match-header font-weight-bold">{queueInfo.mode}</span> | <small>{queueInfo.map}</small> | <small><Clock time={time} /></small>
+          <div className="row">
+            <div className="col">
+              <div className="jbg-light text-dark p-2 font-weight-bold border-bottom">Blue Team:</div>
+                {this.props.match.participants.map((player) => {
+                  if(player.teamId == 100) {
+                    return <PlayerInfo player={player} />
+                  }
+                })}
+            </div>
+            <div className="col">
+              <div className="jbg-light text-dark p-2 font-weight-bold border-bottom border-top">Red Team:</div>
+                {this.props.match.participants.map((player) => {
+                  if(player.teamId == 200) {
+                    return <PlayerInfo player={player} />
+                  }
+                })}
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -2,9 +2,37 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #dfe3eb;
 }
 
 a {
   text-decoration: none;
   display: inline-flex;
+}
+
+.player-info {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.match-header {
+  font-size: 20px;
+}
+
+.jbg-light {
+  background-color: #f9f9fa;
+}
+
+.jbg-red {
+  background-color: #d95959;
+}
+
+.jbg-blue {
+  background-color: #598ad9;
+}
+
+.summoner-lookup {
+  padding-top: 200px;
+  padding-bottom: 400px;
+  height: calc(100vh - 112px); 
 }
