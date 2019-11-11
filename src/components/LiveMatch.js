@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Clock from './Clock';
 import PlayerInfo from './PlayerInfo';
 
-export default class Match extends React.Component {
+export default class LiveMatch extends React.Component {
 
   queueInfo(qid) {
     switch (qid) {
@@ -22,11 +22,7 @@ export default class Match extends React.Component {
   }
 
   colorFromMap(map) {
-    if(map === "Summoner's Rift") {
-      return "jbg-red";
-    } else {
-      return "jbg-blue";
-    }
+    return "jbg-blue";
   }
 
   render() {

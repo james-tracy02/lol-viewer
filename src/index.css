@@ -31,8 +31,17 @@ a {
   background-color: #598ad9;
 }
 
+.jcolor-light {
+  color: #d0e3f7;
+}
+
 .summoner-lookup {
   padding-top: 200px;
   padding-bottom: 400px;
-  height: calc(100vh - 112px); 
+  height: calc(100vh - 106px);
+}
+
+.footer {
+  font-size: 12px;
+  text-align: center;
 }

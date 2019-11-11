@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Match from '../components/Match';
-import mockMatches from '../mock/matches.json';
+import LiveMatch from '../components/LiveMatch';
+import { riotService } from '../service/RiotService';
 
 export default class FeaturedSpectate extends React.Component {
   constructor() {
@@ -13,21 +13,21 @@ export default class FeaturedSpectate extends React.Component {
 
   componentDidMount() {
     this.fetchMatches()
-    .then((matches) => this.setState({matches: matches}));
+    .then((matches) => this.setState({ matches: matches }));
   }
 
   fetchMatches() {
-    return new Promise(function(resolve, reject) {
-      resolve(mockMatches.gameList)
-    });
+    return riotService.getFeaturedSpectate();
   }
 
   render() {
     return (
       <div className="spectate">
-        <div className="container px-5 py-1">
+        <div className="container px-5 py-3">
+        <h2>Featured Spectate</h2>
+        <hr />
           {this.state.matches.map((match) => {
-            return <Match match={match} />;
+            return <LiveMatch match={match} />;
           })}
         </div>
       </div>
