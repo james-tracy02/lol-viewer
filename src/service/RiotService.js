@@ -1,4 +1,4 @@
-const path = 'http://localhost:8080';
+const path = 'https://lol-viewer-backend.herokuapp.com';
 
 function getFeaturedSpectate() {
   return fetch(`${path}/spectator/featured`)
