@@ -9,9 +9,6 @@ export default class Navbar extends React.Component {
           <NavLink className="navbar-brand" to="/">LOL Viewer</NavLink>
           <div className="navbar-nav mr-auto">
             <NavLink className="nav-item nav-link" activeClassName="active" exact={true} to="/">Home</NavLink>
-            <NavLink className="nav-item nav-link" activeClassName="active" to="/champions">Champions</NavLink>
-            <NavLink className="nav-item nav-link" activeClassName="active" to="/spectate">Spectate</NavLink>
-            <NavLink className="nav-item nav-link" activeClassName="active" to="/leaderboards">Leaderboards</NavLink>
           </div>
         </div>
       </div>

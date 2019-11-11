@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SummonerInfo from '../components/SummonerInfo';
+import FeedbackMessage from '../components/FeedbackMessage';
 import { riotService } from '../service/RiotService';
 
 export default class SummonerProfile extends React.Component {
@@ -8,6 +9,7 @@ export default class SummonerProfile extends React.Component {
 
     this.state = {
       summoner: null,
+      statusCode: null,
     }
   }
 
@@ -17,14 +19,21 @@ export default class SummonerProfile extends React.Component {
 
   fetchSummoner(name) {
     return riotService.getSummonerByName(name)
-    .then((summoner) => this.setState({ summoner: summoner }));
+    .then((res) => {
+      this.setState({
+        summoner: JSON.parse(res.body),
+        statusCode: res.statusCode,
+      });
+    });
   }
 
   render() {
-    if(this.state.summoner) {
-      return <SummonerInfo summoner={this.state.summoner} />
+    if(!this.state.summoner) {
+      return <FeedbackMessage msg="Fetching summoner profile..." />;
+    } else if (this.state.statusCode !== 200) {
+      return <FeedbackMessage msg={this.state.summoner.status.message} />;
     } else {
-      return <div>Fetching Summoner Profile...</div>
+      return <SummonerInfo summoner={this.state.summoner} />
     }
   }
 }
